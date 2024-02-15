@@ -1,0 +1,70 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "WeAreDevs | Brookhaven RP", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroEnabled = true, IntroText = "Loading..."})
+
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "",
+	PremiumOnly = false
+})
+
+Tab:AddToggle({
+	Name = "Loop C4",
+	Default = false,
+	Callback = function(Value)
+		local n = game:GetService("Players").LocalPlayer.Name
+local mt = getrawmetatable(game)
+local old = mt.__namecall
+local protect = newcclosure or protect_function
+if not protect then
+protect = function(f) return f end
+end
+setreadonly(mt, false)
+mt.__namecall = protect(function(self, ...)
+local method = getnamecallmethod()
+if method == "Kick" then
+wait(9e9)
+return
+end
+return old(self, ...)
+end)
+hookfunction(game:GetService("Players").LocalPlayer.Kick,protect(function() wait(9e9) end))
+local OldNamecall
+OldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
+       local args = {...}
+       local method = getnamecallmethod()
+
+       if tostring(self) == "Exploit" and method == "FireServer" then
+           args[1] = wait(9e9)
+           return self.FireServer(self, unpack(args))
+end
+return OldNamecall(self, ...)
+end)
+local A_1 = "2NN2Pick2NN2ingTo2NN2ols"
+local A_2 = "Bomb"
+local Event = game:GetService("ReplicatedStorage").JJ3["2NN2T2NN2ool"]
+Event:InvokeServer(A_1, A_2)
+game.Players.LocalPlayer.Backpack.Bomb.Parent = game.Players.LocalPlayer.Character
+game.Players.LocalPlayer.Backpack.Bomb.WallMaker.Parent = nil
+local A_1 = "Bomb"..tostring(n)
+local Event = game:GetService("ReplicatedStorage").JJ3["2NN2Blo2NN2wBomb2NN2sServe2NN2r"]
+Event:FireServer(A_1)
+	end    
+})
+
+Tab:AddButton({
+	Name = "Avatar Unlocker (by IceHub)",
+	Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/IceMael7/AvatarUnlocker/main/IceHub'))()
+  	end    
+})
+
+Tab:AddParagraph("Instructions:","go to the tool thing and use cart, then you paste the script in, quickly make a player sit on the cart, insert the script before the player jumps out")
+
+    Tab:AddButton({
+        Name = "Kill Player (read Instructions)",
+        Callback = function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-212, -499, -627)
+          end    
+    })
+
+    OrionLib:Init()
